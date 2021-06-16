@@ -11,6 +11,8 @@ public class ClienteModel {
 	@Id
 	private String id;
 
+	private String email;
+
 	private String username;
 
 	@JsonBackReference
@@ -22,6 +24,14 @@ public class ClienteModel {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getUsername() {

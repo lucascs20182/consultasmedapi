@@ -19,34 +19,32 @@ import br.edu.unifeso.apiconsultasmed.security.JWTUtil;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	AuthService service;
-	
+
 	@Autowired
 	JWTUtil jwtUtil;
-	
-	private static final String[] AUTH_WHITELIST = { "/create", "/swagger-ui/**" };
-	
+
+	private static final String[] AUTH_WHITELIST = { "/create", "/swagger-ui/**", "/v3/api-docs/**" };
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
-		http.authorizeRequests()
-		.antMatchers(AUTH_WHITELIST).permitAll()
-		.anyRequest().authenticated();
-		http.addFilterBefore(new JWTAutheticationFilter(authenticationManager(),jwtUtil), 
+		http.authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll().anyRequest().authenticated();
+		http.addFilterBefore(new JWTAutheticationFilter(authenticationManager(), jwtUtil),
 				UsernamePasswordAuthenticationFilter.class);
-		http.addFilterBefore(new JWTAuthorizationFilter(),UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
-	
+
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(service).passwordEncoder(bCryptPasswordEncoder());
 	}
 }
