@@ -14,8 +14,8 @@ import br.edu.unifeso.apiconsultasmed.exceptions.ItemAlreadyExistsException;
 import br.edu.unifeso.apiconsultasmed.models.ClienteModel;
 import br.edu.unifeso.apiconsultasmed.services.ClienteService;
 
-@RestController
 @CrossOrigin("*")
+@RestController
 public class ClienteController {
 	
 	@Autowired

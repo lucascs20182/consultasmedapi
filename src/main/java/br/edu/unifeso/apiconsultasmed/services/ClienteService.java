@@ -33,13 +33,17 @@ public class ClienteService {
 	public ClienteModel create(ClienteModel entity) throws ItemAlreadyExistsException {
 
 		for (ClienteModel cliente : this.getAll()) {
-
-			if (cliente.getEmail().equals(entity.getEmail())) {
-				throw new ItemAlreadyExistsException("Uma conta já foi cadastrada utilizando este e-mail.");
+ 
+			if(cliente.getEmail() != null) {
+				if (cliente.getEmail().equals(entity.getEmail())) {
+					throw new ItemAlreadyExistsException("Uma conta já foi cadastrada utilizando este e-mail.");
+				}
 			}
 
-			if (cliente.getUsername().equals(entity.getUsername())) {
-				throw new ItemAlreadyExistsException("Uma conta já foi cadastrada utilizando este username.");
+			if(cliente.getEmail() != null) {
+				if (cliente.getUsername().equals(entity.getUsername())) {
+					throw new ItemAlreadyExistsException("Uma conta já foi cadastrada utilizando este username.");
+				}
 			}
 		}
 
