@@ -18,7 +18,7 @@ import br.edu.unifeso.apiconsultasmed.exceptions.ItemNotFoundException;
 import br.edu.unifeso.apiconsultasmed.models.MedicoModel;
 import br.edu.unifeso.apiconsultasmed.services.MedicoService;
 
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RestController
 @RequestMapping("/medico")
 public class MedicoController {
