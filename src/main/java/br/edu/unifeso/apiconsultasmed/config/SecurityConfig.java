@@ -47,4 +47,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(service).passwordEncoder(bCryptPasswordEncoder());
 	}
+
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**")
+					.allowedMethods("GET", "POST", "PUT", "DELETE")
+					.allowedHeaders("*")
+					.allowedOrigins("*");
+			}
+		};
+	}
 }
