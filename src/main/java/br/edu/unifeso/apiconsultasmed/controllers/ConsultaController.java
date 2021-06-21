@@ -20,7 +20,7 @@ import br.edu.unifeso.apiconsultasmed.services.ConsultaService;
 import br.edu.unifeso.apiconsultasmed.services.MedicoService;
 import br.edu.unifeso.apiconsultasmed.services.PacienteService;
 
-//@CrossOrigin("*")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/consulta")
 public class ConsultaController {

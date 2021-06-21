@@ -18,7 +18,7 @@ import br.edu.unifeso.apiconsultasmed.exceptions.ItemNotFoundException;
 import br.edu.unifeso.apiconsultasmed.models.PacienteModel;
 import br.edu.unifeso.apiconsultasmed.services.PacienteService;
 
-//@CrossOrigin("*")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/paciente")
 public class PacienteController {
